@@ -1,7 +1,59 @@
 import { chromium } from "playwright";
 
 describe("Launch Browser", () => {
-  test("Open Letcode", async () => {
+  test("Recorded Script Login", async () => {
+    const browser = await chromium.launch({
+      headless: false,
+    });
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    // Go to https://letcode.in/
+    await page.goto("https://letcode.in/");
+    // Click text=Log in
+    await page.locator("text=Log in").click();
+    // Fill text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]
+    await page
+      .locator(
+        'text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]'
+      )
+      .fill("koushik350@gmail.com");
+    // Click text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]
+    await page
+      .locator(
+        'text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]'
+      )
+      .click({
+        modifiers: ["Control"],
+      });
+    // Press Tab
+    await page
+      .locator(
+        'text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]'
+      )
+      .press("Tab");
+    // Fill [placeholder="Enter password"]
+    await page.locator('[placeholder="Enter password"]').fill("Pass123$");
+    // Click text=LOGIN
+    await Promise.all([
+      page.waitForNavigation(/*{ url: 'https://letcode.in/' }*/),
+      page.locator("text=LOGIN").click(),
+    ]);
+    // Click div:has-text("Welcome Koushik Chatterjee") >> nth=2
+    await page
+      .locator('div:has-text("Welcome Koushik Chatterjee")')
+      .nth(2)
+      .click();
+    // Click text=Sign out
+    await page.locator("text=Sign out").click();
+
+    await page.close();
+
+    await context.close();
+    await browser.close();
+  });
+
+  xtest("Open Letcode", async () => {
     const browser = await chromium.launch({
       headless: false,
     });
