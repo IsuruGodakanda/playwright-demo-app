@@ -6,12 +6,11 @@ export default class CommonFunctions {
     this.page = page;
   }
 
-  public get toaster() {
-    return this.page.waitForSelector("div[role='alertdialog']");
-  }
+  toaster = async () =>
+    await this.page.waitForSelector("div[role='alertdialog']");
 
   public async clickAlertDialog() {
-    const ele = await this.toaster;
+    const ele = await this.toaster();
     await ele?.click();
   }
 }

@@ -6,25 +6,27 @@ export default class LoginPage {
     this.page = page;
   }
 
-  public get eleEmailTextField() {
-    return this.page.$("input[name='email']");
-  }
+  eleEmailTextField = async () => await this.page.$("input[name='email']");
 
-  public get elePassTextField() {
-    return this.page.$("input[name='password']");
-  }
+  // public get eleEmailTextField() {
+  //     return this.page.$("input[name='email']")
+  //     // return elename;
+  // }
+
+  elePassTextField = async () => await this.page.$("input[name='password']");
 
   public get eleLoginBtn() {
     return this.page.$("//button[text()='LOGIN']");
   }
 
   public async enterUserName(name: string) {
-    const ele = await this.eleEmailTextField;
-    await ele?.fill(name);
+    const ele = await this.eleEmailTextField();
+    if (ele != null) await ele.fill(name);
+    else throw new Error("No element, hence failed");
   }
 
   public async enterUserPassword(pass: string) {
-    const ele = await this.elePassTextField;
+    const ele = await this.elePassTextField();
     await ele?.fill(pass);
   }
 
