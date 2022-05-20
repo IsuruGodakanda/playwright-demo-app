@@ -1,4 +1,4 @@
-import { chromium, Page, Browser, BrowserContext } from "playwright";
+import { chromium, Page, Browser, BrowserContext } from "@playwright/test";
 import CommonFunctions from "../../page/common.page";
 import HeaderPage from "../../page/Header.page";
 import LoginPage from "../../page/Login.page";

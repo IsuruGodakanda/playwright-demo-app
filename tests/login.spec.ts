@@ -1,4 +1,4 @@
-import { chromium } from "playwright";
+import { chromium } from "@playwright/test";
 
 describe("Launch browser", () => {
   test("recorded script login", async () => {
@@ -7,7 +7,7 @@ describe("Launch browser", () => {
     });
     const context = await browser.newContext({
       recordVideo: {
-        dir: "./videos/",
+        dir: "../videos/",
         size: {
           width: 800,
           height: 600,

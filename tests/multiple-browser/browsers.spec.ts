@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, Page, firefox } from "playwright";
+import { Browser, BrowserContext, Page, firefox } from "@playwright/test";
 
 describe("Launch local browser", () => {
   let browser: Browser;

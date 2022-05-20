@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, Page, chromium } from "playwright";
+import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 
 describe("Drag and Drop", () => {
   let browser: Browser;

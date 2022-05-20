@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, chromium, Page } from "playwright";
+import { Browser, BrowserContext, chromium, Page } from "@playwright/test";
 
 describe("Learn how to handle input fields", () => {
   let browser: Browser;

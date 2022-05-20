@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, Page, chromium } from "playwright";
+import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 
 describe("Frames handling concept", () => {
   let browser: Browser;

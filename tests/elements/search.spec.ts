@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, Page, chromium } from "playwright";
+import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 
 describe("Search Git Repo", () => {
   let browser: Browser;
@@ -20,7 +20,7 @@ describe("Search Git Repo", () => {
 
   test("enter Git username", async () => {
     const header = await page.$("nav[role='navigation']");
-    header?.screenshot({ path: "./screenshots/header.png" });
+    header?.screenshot({ path: "../../screenshots/header.png" });
     const ele = await page.$("input[name='username']");
     await ele?.fill("ortonikc");
     await ele?.press("Enter");
@@ -41,12 +41,12 @@ describe("Search Git Repo", () => {
       })
     );
     console.log(allUrls);
-    await page.screenshot({ path: "./screenshots/fs.png", fullPage: true });
+    await page.screenshot({ path: "../../screenshots/fs.png", fullPage: true });
   });
 
   afterEach(async () => {
     await page.screenshot({
-      path: `./screenshots/${Date.now()}screenshot1.png`,
+      path: `../../screenshots/${Date.now()}screenshot1.png`,
     });
   });
 

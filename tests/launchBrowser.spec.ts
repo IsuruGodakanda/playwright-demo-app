@@ -1,4 +1,4 @@
-import { chromium } from "playwright";
+import { chromium } from "@playwright/test";
 
 describe("Launch browser", () => {
   test("open Letcode", async () => {
