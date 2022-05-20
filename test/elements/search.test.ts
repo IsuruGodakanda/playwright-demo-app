@@ -13,7 +13,14 @@ describe("Search Git Repo", () => {
     await page.goto("https://letcode.in/elements");
   });
 
+  // Screenshots types
+  // Full page
+  // Capture into Buffer
+  // Element
+
   test("enter Git username", async () => {
+    const header = await page.$("nav[role='navigation']");
+    header?.screenshot({ path: "./screenshots/header.png" });
     const ele = await page.$("input[name='username']");
     await ele?.fill("ortonikc");
     await ele?.press("Enter");
@@ -34,6 +41,13 @@ describe("Search Git Repo", () => {
       })
     );
     console.log(allUrls);
+    await page.screenshot({ path: "./screenshots/fs.png", fullPage: true });
+  });
+
+  afterEach(async () => {
+    await page.screenshot({
+      path: `./screenshots/${Date.now()}screenshot1.png`,
+    });
   });
 
   afterAll(async () => {
