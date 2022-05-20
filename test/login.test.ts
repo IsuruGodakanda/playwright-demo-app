@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 
-describe("Launch Browser", () => {
-  test("Recorded Script Login", async () => {
+describe("Launch browser", () => {
+  test("recorded script login", async () => {
     const browser = await chromium.launch({
       headless: false,
     });
@@ -61,7 +61,7 @@ describe("Launch Browser", () => {
     await browser.close();
   });
 
-  xtest("Open Letcode", async () => {
+  xtest("open Letcode", async () => {
     const browser = await chromium.launch({
       headless: false,
     });
