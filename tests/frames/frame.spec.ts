@@ -24,14 +24,14 @@ test.describe("Frames handling concept", () => {
     const frame = page.frame({ name: "firstFr" });
     // frame?.fill("")
     if (frame != null) {
-      await frame.fill("input[name='fname']", "Koushik");
-      await frame.fill("input[name='lname']", "Chatterjee");
+      await frame.fill("input[name='fname']", "Tharushi");
+      await frame.fill("input[name='lname']", "De Silva");
 
       // inner frame
       const frames = frame.childFrames();
       console.log("No. of inner frames: " + frames.length);
       if (frames != null)
-        await frames[0].fill("input[name='email']", "koushik@mail.com");
+        await frames[0].fill("input[name='email']", "playwrightdemo@gmail.com");
       else {
         console.log("Wrong frame");
       }
