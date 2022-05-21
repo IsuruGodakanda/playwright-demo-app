@@ -1,13 +1,13 @@
-import { chromium } from "@playwright/test";
+import { test, chromium } from "@playwright/test";
 
-describe("Launch browser", () => {
+test.describe("Launch browser", () => {
   test("recorded script login", async () => {
     const browser = await chromium.launch({
       headless: false,
     });
     const context = await browser.newContext({
       recordVideo: {
-        dir: "../videos/",
+        dir: "./videos/",
         size: {
           width: 800,
           height: 600,
@@ -61,7 +61,7 @@ describe("Launch browser", () => {
     await browser.close();
   });
 
-  xtest("open Letcode", async () => {
+  test("open Letcode", async () => {
     const browser = await chromium.launch({
       headless: false,
     });
@@ -72,6 +72,10 @@ describe("Launch browser", () => {
     await page.fill("input[name='email']", "koushik350@gmail.com");
     await page.fill("input[name='password']", "Pass123$");
     await page.click('button:text("LOGIN")');
+    await page
+      .locator('div:has-text("Welcome Koushik Chatterjee")')
+      .nth(2)
+      .click();
     await page.click('"Sign out"');
     await browser.close();
   });

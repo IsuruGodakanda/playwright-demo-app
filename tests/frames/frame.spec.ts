@@ -1,10 +1,16 @@
-import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
+import {
+  test,
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+} from "@playwright/test";
 
-describe("Frames handling concept", () => {
+test.describe("Frames handling concept", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -35,7 +41,7 @@ describe("Frames handling concept", () => {
     } else throw new Error("No such frame");
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();

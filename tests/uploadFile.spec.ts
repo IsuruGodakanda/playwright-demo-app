@@ -1,7 +1,7 @@
-import { chromium } from "@playwright/test";
+import { test, chromium } from "@playwright/test";
 import path from "path";
 
-describe("Upload file", () => {
+test.describe("Upload file", () => {
   const filePath0 = path.join(__dirname, "../videos/a.webm");
   const filePath1 = path.join(__dirname, "../videos/b.webm");
 
@@ -20,7 +20,7 @@ describe("Upload file", () => {
     await page.click(".example + div#drag-drop-upload", { force: true });
   });
 
-  xtest("upload file using set input files", async () => {
+  test("upload file using set input files", async () => {
     const browser = await chromium.launch({
       headless: false,
     });

@@ -1,10 +1,17 @@
-import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
+import {
+  test,
+  expect,
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+} from "@playwright/test";
 
-describe("Window handling", () => {
+test.describe("Window handling", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -18,7 +25,7 @@ describe("Window handling", () => {
     expect(await page.title()).toBe("Window handling - LetCode");
   });
 
-  xtest("single page handling", async () => {
+  test("single page handling", async () => {
     const [newWindow] = await Promise.all([
       context.waitForEvent("page"), // Wait for listner, that we got new page or not
       await page.click("#home"),
@@ -26,11 +33,11 @@ describe("Window handling", () => {
     await newWindow.waitForLoadState(); // Wait until page load in seperate tab completely
     expect(newWindow.url()).toContain("test");
     await newWindow.click('"Log in"');
-    await newWindow.waitForNavigation(); // Wait until page navigation
+    // await newWindow.waitForNavigation(); // Wait until page navigation
     expect(newWindow.url()).toContain("signin");
     // await newWindow.close(); // Closed newly created window
     await page.bringToFront(); // Bring the focus to current tab
-    await page.click('"LetXPath"');
+    // await page.click('"LetXPath"');
   });
 
   test("multipage handling", async () => {
@@ -52,7 +59,7 @@ describe("Window handling", () => {
     await allwindows[1].click("id=accept");
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();

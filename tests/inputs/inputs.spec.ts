@@ -1,11 +1,17 @@
-import { Browser, BrowserContext, chromium, Page } from "@playwright/test";
+import {
+  test,
+  Browser,
+  BrowserContext,
+  chromium,
+  Page,
+} from "@playwright/test";
 
-describe("Learn how to handle input fields", () => {
+test.describe("Learn how to handle input fields", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
 
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -40,7 +46,7 @@ describe("Learn how to handle input fields", () => {
     await page.fill("//input[@value='Koushik Chatterjee']", "");
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();
