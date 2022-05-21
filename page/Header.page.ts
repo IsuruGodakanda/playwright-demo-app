@@ -1,4 +1,4 @@
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 
 export default class HeaderPage {
   private page: Page;
@@ -24,8 +24,14 @@ export default class HeaderPage {
   }
 
   public async clickLoginLink() {
-    const ele = await this.eleLoginBtn;
-    await ele?.click();
+    await Promise.all([
+      this.page.waitForNavigation({
+        waitUntil: "domcontentloaded",
+      }),
+      this.page.click("text=Log in"),
+    ]);
+    // const ele = await this.eleLoginBtn;
+    // await ele?.click();
   }
 
   public async clickSignOutLink() {

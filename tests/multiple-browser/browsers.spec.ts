@@ -1,10 +1,17 @@
-import { Browser, BrowserContext, Page, firefox } from "playwright";
+import {
+  test,
+  expect,
+  Browser,
+  BrowserContext,
+  Page,
+  firefox,
+} from "@playwright/test";
 
-describe("Launch local browser", () => {
+test.describe("Launch local browser", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await firefox.launch({
       headless: false,
       // channel: "msedge" // If this not suggest browsers please install playwright globaly
@@ -21,7 +28,7 @@ describe("Launch local browser", () => {
     expect(title).toBe("LetCode with Koushik");
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await browser.close();
   });
 });

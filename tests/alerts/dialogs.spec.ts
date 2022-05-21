@@ -1,11 +1,17 @@
-import { Browser, BrowserContext, chromium, Page } from "playwright";
+import {
+  test,
+  Browser,
+  BrowserContext,
+  chromium,
+  Page,
+} from "@playwright/test";
 
-describe("Learn how to handle alert", () => {
+test.describe("Learn how to handle alert", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
 
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -26,7 +32,7 @@ describe("Learn how to handle alert", () => {
     await ele?.click();
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();

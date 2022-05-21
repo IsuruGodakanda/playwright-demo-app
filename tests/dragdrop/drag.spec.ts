@@ -1,10 +1,16 @@
-import { Browser, BrowserContext, Page, chromium } from "playwright";
+import {
+  test,
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+} from "@playwright/test";
 
-describe("Drag and Drop", () => {
+test.describe("Drag and Drop", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -12,7 +18,7 @@ describe("Drag and Drop", () => {
     page = await context.newPage();
   });
 
-  xtest("my test", async () => {
+  test("my test", async () => {
     await page.goto("https://letcode.in/dropable");
     const src = await page.$("#draggable");
     const dst = await page.$("#droppable");
@@ -67,7 +73,7 @@ describe("Drag and Drop", () => {
     }
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();

@@ -1,10 +1,17 @@
-import { Browser, BrowserContext, Page, chromium } from "playwright";
+import {
+  test,
+  expect,
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+} from "@playwright/test";
 
-describe("How to handle Select", () => {
+test.describe("How to handle Select", () => {
   let browser: Browser;
   let context: BrowserContext;
   let page: Page;
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     browser = await chromium.launch({
       headless: false,
     });
@@ -23,10 +30,10 @@ describe("How to handle Select", () => {
     }
   });
 
-  test("select multiple", async () => {
-    const heros = await page.$("#superheros");
-    heros?.selectOption([{ label: "Aquaman" }, { value: "bt" }, { index: 8 }]);
-  });
+  // test("select multiple", async () => {
+  //   const heros = await page.$("#superheros");
+  //   heros?.selectOption([{ label: "Aquaman" }, { value: "bt" }, { index: 8 }]);
+  // });
 
   test("count of the select", async () => {
     const lang = await page.$$("#lang option"); // Find the all elements as an array
@@ -43,7 +50,7 @@ describe("How to handle Select", () => {
     expect(text).toBe("India");
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await page.close();
     await context.close();
     await browser.close();

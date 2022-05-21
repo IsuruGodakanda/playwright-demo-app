@@ -1,6 +1,6 @@
-import { chromium } from "playwright";
+import { test, chromium } from "@playwright/test";
 
-describe("Launch browser", () => {
+test.describe("Launch browser", () => {
   test("open Letcode", async () => {
     const browser = await chromium.launch({
       headless: false,
