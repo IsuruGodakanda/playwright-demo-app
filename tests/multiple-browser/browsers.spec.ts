@@ -22,10 +22,9 @@ test.describe("Launch local browser", () => {
     await page.goto("https://letcode.in/");
   });
 
-  test("Goto letcode and verify title as LetCode with Koushik", async () => {
+  test("Goto letcode and verify title as LetCode with Tharushi", async () => {
     const title = await page.title();
-    console.log(title);
-    expect(title).toBe("LetCode with Koushik");
+    expect(title).toContain("LetCode with");
   });
 
   test.afterAll(async () => {

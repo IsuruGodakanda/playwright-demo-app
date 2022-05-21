@@ -21,12 +21,12 @@ test.describe("Learn how to handle input fields", () => {
   });
 
   test("enter your full name", async () => {
-    // await page.type("id=fullName", "Koushik Chatterjee");
+    // await page.type("id=fullName", "Tharushi De Silva");
     const name = await page.$("#fullName"); // CSS selector as locator
     // if (name != null) {
     //   name.type("");
     // }
-    await name?.type("Koushik Chatterjee"); // Optional chaining
+    await name?.type("Tharushi De Silva"); // Optional chaining
   });
 
   test("append a text and press keyboard tab", async () => {
@@ -43,7 +43,7 @@ test.describe("Learn how to handle input fields", () => {
   });
 
   test("clear the text", async () => {
-    await page.fill("//input[@value='Koushik Chatterjee']", "");
+    await page.fill("id=fullName", "");
   });
 
   test.afterAll(async () => {

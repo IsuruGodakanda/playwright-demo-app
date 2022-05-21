@@ -26,7 +26,7 @@ test.describe("Learn how to handle alert", () => {
       console.log("Message: " + dialog.message());
       console.log("Default Value: " + dialog.defaultValue());
       console.log("Type: " + dialog.type());
-      dialog.accept("hello koushik"); // If just want to accept: dialog.accept()
+      dialog.accept("hello tharushi"); // If just want to accept: dialog.accept()
       // dialog.dismiss()
     });
     await ele?.click();

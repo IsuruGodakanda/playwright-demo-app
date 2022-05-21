@@ -25,7 +25,7 @@ test.describe("Launch browser", () => {
       .locator(
         'text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]'
       )
-      .fill("koushik350@gmail.com");
+      .fill("playwrightdemo@gmail.com");
     // Click text=EmailPasswordLOGIN >> [placeholder="Enter registered email"]
     await page
       .locator(
@@ -41,15 +41,15 @@ test.describe("Launch browser", () => {
       )
       .press("Tab");
     // Fill [placeholder="Enter password"]
-    await page.locator('[placeholder="Enter password"]').fill("Pass123$");
+    await page.locator('[placeholder="Enter password"]').fill("Asdf123$");
     // Click text=LOGIN
     await Promise.all([
       page.waitForNavigation(/*{ url: 'https://letcode.in/' }*/),
       page.locator("text=LOGIN").click(),
     ]);
-    // Click div:has-text("Welcome Koushik Chatterjee") >> nth=2
+    // Click div:has-text("Welcome Tharushi De Silva") >> nth=2
     await page
-      .locator('div:has-text("Welcome Koushik Chatterjee")')
+      .locator('div:has-text("Welcome Tharushi De Silva")')
       .nth(2)
       .click();
     // Click text=Sign out
@@ -69,11 +69,11 @@ test.describe("Launch browser", () => {
     const page = await context.newPage();
     await page.goto("https://Letcode.in/");
     await page.click("text=Log in");
-    await page.fill("input[name='email']", "koushik350@gmail.com");
-    await page.fill("input[name='password']", "Pass123$");
+    await page.fill("input[name='email']", "playwrightdemo@gmail.com");
+    await page.fill("input[name='password']", "Asdf123$");
     await page.click('button:text("LOGIN")');
     await page
-      .locator('div:has-text("Welcome Koushik Chatterjee")')
+      .locator('div:has-text("Welcome Tharushi De Silva")')
       .nth(2)
       .click();
     await page.click('"Sign out"');
