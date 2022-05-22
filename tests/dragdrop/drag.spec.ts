@@ -18,10 +18,10 @@ test.describe("Drag and Drop", () => {
     page = await context.newPage();
   });
 
-  test("my test", async () => {
+  test("drag and drop window", async () => {
     await page.goto("https://letcode.in/dropable");
-    const src = await page.$("#draggable");
-    const dst = await page.$("#droppable");
+    const src = await page.locator("#draggable");
+    const dst = await page.locator("#droppable");
     if (src && dst) {
       const srcBound = await src.boundingBox(); // boundingBox give the X,Y and width, height of element
       const dstBound = await dst.boundingBox();
@@ -42,15 +42,15 @@ test.describe("Drag and Drop", () => {
     }
   });
 
-  test("my test", async () => {
+  test("drag and drop frame", async () => {
     await page.goto("https://jqueryui.com/droppable/");
     // switch to frame
     const frame = page.frame({
       url: "https://jqueryui.com/resources/demos/droppable/default.html",
     });
     if (frame) {
-      const src = await frame.$("#draggable");
-      const dst = await frame.$("#droppable");
+      const src = await frame.locator("#draggable");
+      const dst = await frame.locator("#droppable");
       if (src && dst) {
         const srcBound = await src.boundingBox();
         const dstBound = await dst.boundingBox();

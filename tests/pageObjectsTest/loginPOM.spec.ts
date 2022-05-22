@@ -31,9 +31,4 @@ test.describe("TC001", () => {
     await common.clickAlertDialog();
     await header.clickSignOutLink();
   });
-
-  // test("Login again", async () => {
-  //   await login.login("playwrightdemo@gmail.com", "Asdf123$");
-  //   expect(page.url()).toBe("https://letcode.in/");
-  // });
 });

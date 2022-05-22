@@ -21,7 +21,7 @@ test.describe("Learn how to handle alert", () => {
   });
 
   test("handle dialogs", async () => {
-    const ele = await page.$("#prompt");
+    const ele = await page.locator("#prompt");
     page.on("dialog", (dialog) => {
       console.log("Message: " + dialog.message());
       console.log("Default Value: " + dialog.defaultValue());

@@ -22,7 +22,7 @@ test.describe("Learn how to handle input fields", () => {
 
   test("enter your full name", async () => {
     // await page.type("id=fullName", "Tharushi De Silva");
-    const name = await page.$("#fullName"); // CSS selector as locator
+    const name = await page.locator("#fullName"); // CSS selector as locator
     // if (name != null) {
     //   name.type("");
     // }
@@ -30,7 +30,7 @@ test.describe("Learn how to handle input fields", () => {
   });
 
   test("append a text and press keyboard tab", async () => {
-    const join = await page.$("#join");
+    const join = await page.locator("#join");
     await join?.focus();
     await page.keyboard.press("End");
     await join?.type(" Human");
@@ -39,7 +39,6 @@ test.describe("Learn how to handle input fields", () => {
 
   test("what is inside the text box", async () => {
     const text = await page.getAttribute("id=getMe", "value");
-    console.log(text);
   });
 
   test("clear the text", async () => {
