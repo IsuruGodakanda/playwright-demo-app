@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test:login": "npx playwright test loginPOM.spec.ts --headed"
+    "test": "npx playwright test"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tharushi De Silva",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.22.2"
