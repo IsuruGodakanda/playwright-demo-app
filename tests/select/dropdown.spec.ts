@@ -21,17 +21,17 @@ test.describe("How to handle Select", () => {
   });
 
   test("select a dropdown based on value", async () => {
-    const fruits = await page.$("#fruits");
+    const fruits = await page.locator("#fruits");
     // await fruits?.selectOption({ label: "" });
     await fruits?.selectOption("2");
-    const msg = await page.$("div.notification.is-success");
+    const msg = await page.locator("div.notification.is-success");
     if (msg) {
       // expect(await msg.textContent()).toContain("Apple");
     }
   });
 
   // test("select multiple", async () => {
-  //   const heros = await page.$("#superheros");
+  //   const heros = await page.locator("#superheros");
   //   heros?.selectOption([{ label: "Aquaman" }, { value: "bt" }, { index: 8 }]);
   // });
 
@@ -46,7 +46,6 @@ test.describe("How to handle Select", () => {
       "#country",
       (ele) => ele.value
     );
-    console.log(text);
     expect(text).toBe("India");
   });
 
