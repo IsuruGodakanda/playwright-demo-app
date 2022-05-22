@@ -1,22 +1,24 @@
-import { Page } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 
 export default class LoginPage {
-  private page: Page;
+  readonly page: Page;
+  readonly getEmailTextField: Locator;
+  readonly getPassTextField: Locator;
+  readonly getLoginBtn: Locator;
+
   constructor(page: Page) {
     this.page = page;
+    this.getEmailTextField = page.locator("input[name='email']");
+    this.getPassTextField = page.locator("input[name='password']");
+    this.getLoginBtn = page.locator("button", { hasText: "LOGIN" });
   }
 
-  eleEmailTextField = async () => await this.page.$("input[name='email']");
+  eleEmailTextField = async () => await this.getEmailTextField;
 
-  // public get eleEmailTextField() {
-  //     return this.page.$("input[name='email']")
-  //     // return elename;
-  // }
-
-  elePassTextField = async () => await this.page.$("input[name='password']");
+  elePassTextField = async () => await this.getPassTextField;
 
   public get eleLoginBtn() {
-    return this.page.$("//button[text()='LOGIN']");
+    return this.getLoginBtn;
   }
 
   public async enterUserName(name: string) {
@@ -33,11 +35,5 @@ export default class LoginPage {
   public async clickLoginBtn() {
     const ele = await this.eleLoginBtn;
     await ele?.click();
-  }
-
-  public async login(username: string, pass: string) {
-    await this.enterUserName(username);
-    await this.enterUserPassword(pass);
-    await this.clickLoginBtn();
   }
 }

@@ -1,23 +1,27 @@
-import { Page } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 
 export default class HeaderPage {
-  private page: Page;
+  readonly page: Page;
+  readonly getLoginBtn: Locator;
+  readonly getSignOutBtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.getLoginBtn = page.locator("a", { hasText: "Log in" });
+    this.getSignOutBtn = page.locator("a", { hasText: "Sign out" });
   }
 
   // locators
 
   public get eleLoginBtn() {
-    const loginBtn = this.page.$("text=Log in");
+    const loginBtn = this.getLoginBtn;
     if (loginBtn != null) {
       return loginBtn;
     } else throw new Error("No Element");
   }
 
   public get eleSignOutBtn() {
-    const signoutEle = this.page.$("text=Sign out");
+    const signoutEle = this.getSignOutBtn;
     if (signoutEle != null) {
       return signoutEle;
     } else throw new Error("No Element");
@@ -28,10 +32,8 @@ export default class HeaderPage {
       this.page.waitForNavigation({
         waitUntil: "domcontentloaded",
       }),
-      this.page.click("text=Log in"),
+      this.getLoginBtn.click(),
     ]);
-    // const ele = await this.eleLoginBtn;
-    // await ele?.click();
   }
 
   public async clickSignOutLink() {

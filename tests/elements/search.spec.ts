@@ -25,10 +25,10 @@ test.describe("Search Git Repo", () => {
   // Element
 
   test("enter Git username and print all the repos", async () => {
-    const header = await page.$("nav[role='navigation']");
+    const header = await page.locator("nav[role='navigation']");
     header?.screenshot({ path: "./screenshots/header.png" });
-    const ele = await page.$("input[name='username']");
-    await ele?.fill("ortonikc");
+    const ele = await page.locator("input[name='username']");
+    await ele?.fill("desilvawatp");
     await ele?.press("Enter");
 
     await page.waitForSelector("app-gitrepos ol li", { timeout: 5000 }); // Auto wait not effected to multiple elements
